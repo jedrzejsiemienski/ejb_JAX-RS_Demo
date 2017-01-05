@@ -1,3 +1,0 @@
-
-generowanie projektu mavenowego z palca
-mvn archetype:generate -DgroupId=com.jenczuen.restDemo -DartifactId=ejb_JAX-RS_Demo -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
