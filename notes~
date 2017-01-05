@@ -3,7 +3,7 @@ generowanie projektu mavenowego z palca
 mvn archetype:generate -DgroupId=com.jenczuen.restDemo -DartifactId=ejb_JAX-RS_Demo -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
 
 
-mvn archetype:generate -DgroupId=com.jenczuen.restDemo -DartifactId=dupa -DarchetypeArtifactId=jersey-example-java8-webapp -DarchetypeGroupId=org.glassfish.jersey.archetypes -DarchetypeCatalog=http://repo1.maven.org/maven2/archetype-catalog.xml
+mvn archetype:generate -DgroupId=com.jenczuen.restDemo -DartifactId=dupa -DarchetypeArtifactId= -DarchetypeCatalog=http://repo1.maven.org/maven2/archetype-catalog.xml -DinteractiveMode=false
 
 
 cannot Deploy ejb_JAX-RS_Demo
