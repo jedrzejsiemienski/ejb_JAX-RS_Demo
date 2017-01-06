@@ -3,10 +3,14 @@ generowanie projektu mavenowego z palca
 mvn archetype:generate -DgroupId=com.jenczuen.restDemo -DartifactId=ejb_JAX-RS_Demo -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
 
 
-mvn archetype:generate -DgroupId=com.jenczuen.restDemo -DartifactId=dupa -DarchetypeArtifactId= -DarchetypeCatalog=http://repo1.maven.org/maven2/archetype-catalog.xml -DinteractiveMode=false
+mvn archetype:generate -DgroupId=com.jenczuen.restDemo -DartifactId=dupa -DarchetypeArtifactId=jersey-example-java8-webapp -DarchetypeGroupId=org.glassfish.jersey.archetypes -DarchetypeCatalog=http://repo1.maven.org/maven2/archetype-catalog.xml
 
 
 cannot Deploy ejb_JAX-RS_Demo
 deploy is failing=Error occurred during deployment: Exception while loading the app : java.lang.IllegalStateException: ContainerBase.addChild: start: org.apache.catalina.LifecycleException: org.apache.catalina.LifecycleException: java.lang.NoSuchMethodError: com.sun.research.ws.wadl.Response.getRepresentationOrFault()Ljava/util/List;. Please see server.log for more detai
 
 
+
+
+
+curl -H "Content-Type: application/json" -X POST -d '{"name":"Gruby wariat"}' http://localhost:8080/ejb_JAX-RS_Demo/rest/employee/save

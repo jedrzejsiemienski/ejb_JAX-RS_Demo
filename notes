@@ -10,3 +10,7 @@ cannot Deploy ejb_JAX-RS_Demo
 deploy is failing=Error occurred during deployment: Exception while loading the app : java.lang.IllegalStateException: ContainerBase.addChild: start: org.apache.catalina.LifecycleException: org.apache.catalina.LifecycleException: java.lang.NoSuchMethodError: com.sun.research.ws.wadl.Response.getRepresentationOrFault()Ljava/util/List;. Please see server.log for more detai
 
 
+
+
+
+curl -H "Content-Type: application/json" -X POST -d '{"name":"Gruby wariat"}' http://localhost:8080/ejb_JAX-RS_Demo/rest/employee/save
