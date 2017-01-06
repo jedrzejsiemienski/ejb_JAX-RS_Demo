@@ -16,8 +16,6 @@ function updateEmployees() {
 	$.get( API_URL + "/getAll", function( data ) {
 		var list = $('<ul />');
 		jQuery.each(data, function(index, employee) {
-			console.log(index);
-			console.log(employee.name);
 	        $('<li />', {text: index + ' - ' + employee.name}).appendTo(list);
 	    });
 		$('#employees-list').append(list);

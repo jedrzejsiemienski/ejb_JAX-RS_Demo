@@ -7,40 +7,51 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+import com.jenczuen.restDemo.ejb.EmployeesHolder;
 
 import com.jenczuen.restDemo.dtos.EmployeeDTO;
 
 @Path("/employee")
 public class EmployeeController {
 
+	EmployeesHolder employeesHolder;
+	
+	@PostConstruct
+	private void init() {
+		try{
+			InitialContext context = new InitialContext();
+			employeesHolder = (EmployeesHolder)context.lookup("java:global/ejb_JAX-RS_Demo/EmployeesHolder");			
+		} catch(NamingException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@GET
 	@Path("/getAll")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<EmployeeDTO> getAll() {
-		List<EmployeeDTO> result = new ArrayList<EmployeeDTO>();
-		
-		EmployeeDTO e1 = new EmployeeDTO();
-		e1.setName("nazwa");
-		result.add(e1);
-		
-		EmployeeDTO e2 = new EmployeeDTO();
-		e2.setName("nazwa2");
-		result.add(e2);
-		
-		return result;
+		return employeesHolder.getAll();
 	}
 
 	@POST
 	@Path("/save")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response save(EmployeeDTO e) {
-		String result = "Got employee with name : " + e.getName();
-		//return Response.status(201).entity(result).build();
-		return Response.status(201).build();
+		if(employeesHolder.save(e)){
+			return Response.status(201).build();			
+		} else {
+			return Response.status(500).build();
+		}
 	}
 
 }

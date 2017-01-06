@@ -14,3 +14,15 @@ deploy is failing=Error occurred during deployment: Exception while loading the 
 
 
 curl -H "Content-Type: application/json" -X POST -d '{"name":"Gruby wariat"}' http://localhost:8080/ejb_JAX-RS_Demo/rest/employee/save
+
+
+
+<servlet>
+	<servlet-name>ServletAdaptor</servlet-name>
+	<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+	<load-on-startup>1</load-on-startup>
+</servlet>
+<servlet-mapping>
+	<servlet-name>ServletAdaptor</servlet-name>
+	<url-pattern>/resources/*</url-pattern>
+</servlet-mapping>
