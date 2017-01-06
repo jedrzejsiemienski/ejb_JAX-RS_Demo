@@ -22,13 +22,11 @@ function updateEmployees() {
 	    });
 		$('#employees-list').append(list);
 	});
-    
 }
 
 function sendFormData() {
 	var postData = $("#create-employee-form").serializeArray();
-	postData = JSON.stringify(postData);
-	postData = JSON.stringify({"name":"imie"});
+	postData = JSON.stringify({"name":postData[0]["value"]});
 	
 	$.ajax(
 	{
